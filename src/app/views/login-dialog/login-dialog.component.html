@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>ĐĂNG NHẬP</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+  <!-- <hr /> -->
+  <div class="row">
+    <div class="full-width">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="abc@vnpt.vn" />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Nhập mật khẩu"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="warn">
+    <i class="fas fa-ban"></i> Hủy
+  </button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">
+    <i class="fas fa-sign-in-alt"></i> Đăng nhập
+  </button>
+</mat-dialog-actions>
+<p class="text-center">PHẦN MỀM ĐƯỢC XÂY DỰNG BỞI TRẦN DƯƠNG HOÀNG KHẢI</p>

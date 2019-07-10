@@ -1,0 +1,38 @@
+<mat-card>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit laudantium
+  mollitia sunt veniam non possimus. Maiores sequi debitis inventore maxime,
+  ullam veritatis ut harum quo earum repellendus officia eius incidunt?
+</mat-card>
+<mat-divider style="margin-top:5px;"></mat-divider>
+<mat-card>
+  <mat-toolbar>
+    <button mat-button [routerLink]="'../welcome'">
+      <i class="fas fa-home"></i> Trang chủ
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="setting">
+      <i class="fas fa-cogs"></i> Hệ thống
+    </button>
+    <mat-menu #setting="matMenu">
+      <button mat-menu-item>Giới thiệu</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Đăng xuất</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="quanly">
+      <i class="fas fa-list-alt"> Quản lý</i>
+    </button>
+    <mat-menu #quanly="matMenu">
+      <button mat-menu-item [routerLink]="'./hop-dong'">
+        <i class="fas fa-users-cog"></i> Hợp đồng
+      </button>
+      <button mat-menu-item [routerLink]="'./dich-vu'">
+        <i class="fas fa-users-cog"></i> Danh mục dịch vụ
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</mat-card>
+<mat-divider style="margin-top:5px;"></mat-divider>
+<mat-card>
+  <router-outlet></router-outlet>
+</mat-card>

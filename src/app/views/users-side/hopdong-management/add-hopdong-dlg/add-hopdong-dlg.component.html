@@ -1,0 +1,122 @@
+<h2 mat-dialog-title>THÔNG TIN HỢP ĐỒNG</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content style="height: auto;display: inherit;">
+  <!-- User Information -->
+  <div [formGroup]="addform">
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field class="full-width">
+          <mat-label>Số hợp đồng</mat-label>
+          <input matInput formControlName="sohopdong" />
+        </mat-form-field>
+      </div>
+      <div class="col-8">
+        <mat-form-field class="full-width">
+          <!-- <input
+            type="text"
+            placeholder="Dịch vụ"
+            matInput
+            [matAutocomplete]="auto"
+            formControlName="dichvuhopdong"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let dv of listDichvu" [(value)]="dv.kyhieuhd">
+              {{ dv.tendichvu }}
+            </mat-option>
+          </mat-autocomplete> -->
+
+          <mat-label>Dịch vụ</mat-label>
+          <mat-select formControlName="dichvuhopdong">
+            <mat-option *ngFor="let dv of listDichvu" [(value)]="dv.kyhieuhd">
+              {{ dv.tendichvu }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>
+          {{ this.addform.value.sohopdong }} /HĐ-TTKD AGG-TCDN/
+          {{ this.addform.value.dichvuhopdong }}
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <mat-form-field class="full-width">
+          <mat-label>Tên khách hàng</mat-label>
+          <input matInput formControlName="tenkhachhang" />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Ngày hợp đồng"
+            formControlName="ngayhopdong"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="full-width">
+          <!-- <input
+            type="text"
+            placeholder="Nhân viên phát triển"
+            matInput
+            [matAutocomplete]="auto"
+            formControlName="nvphattrien"
+          />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let am of listAM" [(value)]="am.manv">
+              {{ am.hotennv }}
+            </mat-option>
+          </mat-autocomplete> -->
+
+          <mat-label>Nhân viên phát triển</mat-label>
+          <mat-select formControlName="nvphattrien">
+            <mat-option *ngFor="let am of listAM" [(value)]="am.hotennv">
+              {{ am.hotennv }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="full-width">
+          <mat-label>Doanh thu dự kiến</mat-label>
+          <input matInput formControlName="doanhthudukien" class="text-right" />
+          <span matSuffix>&nbsp;VNĐ</span>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions align="end">
+      <button
+        mat-button
+        mat-dialog-close
+        color="warn"
+        (click)="this.dialogRef.close('canceled')"
+      >
+        <i class="fas fa-ban"></i> Hủy
+      </button>
+      <button
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        color="primary"
+        (click)="adddlg()"
+      >
+        <i class="fas fa-user-plus"></i> THÊM
+      </button>
+    </mat-dialog-actions>
+  </div>
+  <!-- User Information -->
+</mat-dialog-content>

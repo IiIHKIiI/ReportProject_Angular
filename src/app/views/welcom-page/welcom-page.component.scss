@@ -1,0 +1,71 @@
+#welcom-bg {
+  //   background-image: url('../assets/img/welcom-bg.jpg');
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.full-width {
+  width: 100%;
+}
+/* Login Button */
+.isometric {
+  color: #484848;
+  display: inline-block;
+  height: 50px;
+  font-size: 25px;
+  line-height: 46px;
+  background: #eaeef1;
+  text-decoration: none;
+  box-sizing: border-box;
+  margin: 1em;
+}
+.isometric .iconback {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+}
+.isometric span {
+  vertical-align: middle;
+}
+.isometric .iconback .fa {
+  line-height: 46px;
+  font-size: 25px;
+}
+.isometric .btnttl {
+  display: inline-block;
+  width: 120px;
+  height: 50px;
+  text-align: center;
+  border-bottom: solid 4px #dcdcdc;
+  vertical-align: middle;
+}
+.isometric .istw {
+  background: #1da1f3;
+  border-bottom: solid 4px #1484ca;
+}
+.isometric .isfb {
+  background: #3b75d4;
+  border-bottom: solid 4px #2a5caf;
+}
+.isometric .isfdly {
+  background: #7ece46;
+  border-bottom: solid 4px #65b130;
+}
+.isometric .ispkt {
+  background: #fd7171;
+  border-bottom: solid 4px #ef4d4d;
+}
+.isometric:hover {
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+}
+.isometric:hover .btnttl,
+.isometric:hover .iconback {
+  border-bottom: none;
+}

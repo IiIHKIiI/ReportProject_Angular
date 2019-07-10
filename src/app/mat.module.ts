@@ -31,9 +31,10 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule,
+  MatStepperModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
+import { LoginDialogComponent } from './views/login-dialog/login-dialog.component';
 
 @NgModule({
   imports: [
@@ -68,7 +69,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   exports: [
     CdkTableModule,
@@ -102,7 +103,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
+  entryComponents: [LoginDialogComponent]
 })
-export class MatModule { }
+export class MatModule {}
