@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>THÔNG TIN KHÁCH HÀNG SỬ DỤNG VNPT - PHARMACY</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content style="height: auto;display: inherit;">
+  <!-- User Information -->
+  <div [formGroup]="addform">
+    <div class="row">
+      <div class="col-8">
+        <mat-form-field class="full-width">
+          <mat-label>Tên NT/QT</mat-label>
+          <input matInput formControlName="tenntqt" />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="full-width">
+          <mat-label>Hình thức</mat-label>
+          <mat-select formControlName="loai">
+            <mat-option value="Công ty">
+              Công ty
+            </mat-option>
+            <mat-option value="Nhà thuốc">
+              Nhà thuốc
+            </mat-option>
+            <mat-option value="Quầy thuốc">
+              Quầy thuốc
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="full-width">
+          <mat-label>Đơn vị</mat-label>
+          <mat-select formControlName="donvi">
+            <mat-option value="Không chọn">
+              --- Không chọn ---
+            </mat-option>
+            <mat-option [(value)]="dv.tendonvi" *ngFor="let dv of listDonvi">
+              {{ dv.tendonvi }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="full-width">
+          <mat-label>Tài khoản Pharmacy</mat-label>
+          <input matInput formControlName="taikhoanphar" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field class="full-width">
+          <mat-label>Tài khoản liên thông</mat-label>
+          <input matInput formControlName="taikhoanlienthong" />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="full-width">
+          <mat-label>Mã QG</mat-label>
+          <input matInput formControlName="maqg" />
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <mat-form-field class="full-width">
+          <mat-label>GPĐKKD</mat-label>
+          <input matInput formControlName="gpdkkd" />
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions align="end">
+      <button
+        mat-button
+        mat-dialog-close
+        color="warn"
+        (click)="this.dialogRef.close('canceled')"
+      >
+        <i class="fas fa-ban"></i> Hủy
+      </button>
+      <button
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        color="primary"
+        (click)="adddlg()"
+      >
+        <i class="fas fa-user-plus"></i> THÊM
+      </button>
+    </mat-dialog-actions>
+  </div>
+  <!-- User Information -->
+</mat-dialog-content>

@@ -23,12 +23,23 @@
       <i class="fas fa-list-alt"> Quản lý</i>
     </button>
     <mat-menu #quanly="matMenu">
-      <button mat-menu-item [routerLink]="'./hop-dong'">
-        <i class="fas fa-users-cog"></i> Hợp đồng
-      </button>
-      <button mat-menu-item [routerLink]="'./dich-vu'">
-        <i class="fas fa-users-cog"></i> Danh mục dịch vụ
-      </button>
+      <ng-template matMenuContent>
+        <button mat-menu-item [routerLink]="'./hop-dong'">
+          <i class="fas fa-users-cog"></i> Hợp đồng
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="subMenu">
+          <i class="fas fa-users-cog"></i> Dịch vụ
+        </button>
+
+        <mat-menu #subMenu="matMenu">
+          <ng-template matMenuContent>
+            <button mat-menu-item [routerLink]="'./dich-vu/pharmacy'">
+              VNPT - Pharmacy
+            </button>
+            <button mat-menu-item>VNPT - Invoice</button>
+          </ng-template>
+        </mat-menu>
+      </ng-template>
     </mat-menu>
   </mat-toolbar>
 </mat-card>

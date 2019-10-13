@@ -10,6 +10,7 @@ import { AddUserDlgComponent } from '../user-management/add-user-dlg/add-user-dl
 import { ListDichvuComponent } from '../dicvu-management/list-dichvu/list-dichvu.component';
 import { AddDichvuDlgComponent } from '../dicvu-management/add-dichvu-dlg/add-dichvu-dlg.component';
 import { SharedModule } from 'src/app/shared.module';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,11 @@ import { SharedModule } from 'src/app/shared.module';
     ListDichvuComponent,
     AddDichvuDlgComponent
   ],
-  exports: [LoginDialogComponent],
-  entryComponents: [AddUserDlgComponent, AddDichvuDlgComponent]
+  exports: [LoginDialogComponent, ConfirmDialogComponent],
+  entryComponents: [
+    ConfirmDialogComponent,
+    AddUserDlgComponent,
+    AddDichvuDlgComponent
+  ]
 })
 export class AdminLayoutModule {}

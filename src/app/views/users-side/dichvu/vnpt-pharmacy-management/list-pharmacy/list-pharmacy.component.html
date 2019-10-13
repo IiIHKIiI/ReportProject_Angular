@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>QUẢN LÝ HỢP ĐỒNG</h2>
+<h2 mat-dialog-title>QUẢN LÝ DỊCH VỤ VNPT - PHARMACY</h2>
 <button
   mat-button
   cdkFocusInitial
@@ -34,61 +34,68 @@
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="sohopdong">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Số hợp đồng</th>
-        <td
-          mat-cell
-          *matCellDef="let element"
-          matTooltip="{{ element.sohopdong }}/HĐ-TTKD AGG-TCDN/{{
-            element.dichvuhopdong
-          }}"
-          style="color: red; font-weight: bolder; font-size: large;"
-        >
-          {{ element.sohopdong }}
+      <ng-container matColumnDef="donvi">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Đơn vị</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.donvi }}
         </td>
       </ng-container>
 
       <!-- Name Column -->
-      <ng-container matColumnDef="ngayhopdong">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ngày hợp đồng</th>
+      <ng-container matColumnDef="loai">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Hình thức</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.ngayhopdong }}
+          <mat-chip-list>
+            <ng-container *ngIf="element.loai === 'Công Ty'">
+              <mat-chip color="warning" selected>Công Ty</mat-chip>
+            </ng-container>
+            <ng-container *ngIf="element.loai === 'Nhà thuốc'">
+              <mat-chip color="primary" selected>Nhà thuốc</mat-chip>
+            </ng-container>
+            <ng-container *ngIf="element.loai === 'Quầy Thuốc'">
+              <mat-chip selected>Quầy Thuốc</mat-chip>
+            </ng-container>
+          </mat-chip-list>
         </td>
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="tenkhachhang">
+      <ng-container matColumnDef="tenntqt">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Tên khách hàng
+          Tên NT/QT
         </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.tenkhachhang }}
+          {{ element.tenntqt }}
         </td>
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="dichvuhopdong">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dịch vụ</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.dichvuhopdong }}
-        </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="nvphattrien">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>AM</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.nvphattrien }}
-        </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="doanhthudukien">
+      <ng-container matColumnDef="taikhoanphar">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Doanh thu dự kiến
+          Tài khoản Pharmacy
         </th>
         <td mat-cell *matCellDef="let element">
-          {{ element.doanhthudukien }} VNĐ
+          {{ element.taikhoanphar }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="taikhoanlienthong">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Tài khoản liên thông
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.taikhoanlienthong }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="trangthai">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Trạng thái
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.trangthai }}
         </td>
       </ng-container>
 

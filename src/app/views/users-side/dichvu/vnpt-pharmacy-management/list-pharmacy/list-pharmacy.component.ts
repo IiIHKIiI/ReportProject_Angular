@@ -1,55 +1,50 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Pharmacy } from 'src/app/models/pharmacy';
 import {
-  MatSort,
   MatTableDataSource,
+  MatSort,
+  MatPaginator,
   MatDialog,
-  MatSnackBar,
-  MatPaginator
+  MatSnackBar
 } from '@angular/material';
-import { Hopdong } from 'src/app/models/hopdong';
-import { HopdongServicesService } from 'src/app/services/hopdong-services.service';
-import { AddHopdongDlgComponent } from '../add-hopdong-dlg/add-hopdong-dlg.component';
+import { PharmacyServicesService } from 'src/app/services/pharmacy-services.service';
 import { ExcelServicesService } from 'src/app/services/save-file-excel.service';
+import { AddPharmacyDlgComponent } from '../add-pharmacy-dlg/add-pharmacy-dlg.component';
 import { ConfirmDialogComponent } from 'src/app/views/confirm-dialog/confirm-dialog.component';
 
 @Component({
-  selector: 'app-list-hopdong',
-  templateUrl: './list-hopdong.component.html',
-  styleUrls: ['./list-hopdong.component.scss']
+  selector: 'app-list-pharmacy',
+  templateUrl: './list-pharmacy.component.html',
+  styleUrls: ['./list-pharmacy.component.scss']
 })
-export class ListHopdongComponent implements OnInit, AfterViewInit {
+export class ListPharmacyComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  events: string[] = [];
-  opened: boolean;
-
-  listHopdong: Hopdong[];
-  dataSource = new MatTableDataSource<Hopdong>();
+  listPharmacy: Pharmacy[];
+  dataSource = new MatTableDataSource<Pharmacy>();
 
   constructor(
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private hopdongServices: HopdongServicesService,
+    private pharmacyServices: PharmacyServicesService,
     private saveAs: ExcelServicesService
   ) {}
 
   displayedColumns: string[] = [
     'STT',
-    'sohopdong',
-    'ngayhopdong',
-    'tenkhachhang',
-    'dichvuhopdong',
-    'nvphattrien',
-    'doanhthudukien',
+    'donvi',
+    'tenntqt',
+    'loai',
+    'taikhoanphar',
+    'taikhoanlienthong',
+    'trangthai',
     'ghichu',
     'actions'
   ];
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
   ngOnInit() {
-    this.getListHopdong();
-    this.dataSource.paginator = this.paginator;
+    this.getListPharmacy();
   }
 
   ngAfterViewInit(): void {
@@ -60,16 +55,15 @@ export class ListHopdongComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  getListHopdong() {
-    this.hopdongServices.getList().subscribe(data => {
+  getListPharmacy() {
+    this.pharmacyServices.getList().subscribe(data => {
       this.dataSource.data = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data()
-        } as Hopdong;
+        } as Pharmacy;
       });
     });
-
     this.dataSource.paginator = this.paginator;
   }
 
@@ -77,11 +71,11 @@ export class ListHopdongComponent implements OnInit, AfterViewInit {
     const dataJson = JSON.parse(JSON.stringify(this.dataSource.data));
     console.log(dataJson);
 
-    this.saveAs.exportAsExcelFile(dataJson, 'danhsachhopdong');
+    this.saveAs.exportAsExcelFile(dataJson, 'danhsachpharmacy');
   }
 
   openAddUser() {
-    const dialogRef = this.dialog.open(AddHopdongDlgComponent, {
+    const dialogRef = this.dialog.open(AddPharmacyDlgComponent, {
       width: '800px',
       height: '420px',
       data: {}
@@ -98,7 +92,7 @@ export class ListHopdongComponent implements OnInit, AfterViewInit {
     });
   }
 
-  deleteDoc(data: Hopdong) {
+  deleteDoc(data: Pharmacy) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '500px',
       height: '250px',
@@ -109,7 +103,7 @@ export class ListHopdongComponent implements OnInit, AfterViewInit {
       if (result === 'canceled') {
       } else if (result) {
         try {
-          this.hopdongServices.delete(data);
+          this.pharmacyServices.delete(data);
           this.snackBar.open('Xóa thành công!', 'Đóng');
         } catch (error) {
           this.snackBar.open('Lỗi! Vui lòng kiểm tra lại', 'Đóng');

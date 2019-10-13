@@ -19,7 +19,6 @@ const moment = _moment;
 export class AddHopdongDlgComponent implements OnInit {
   listAM: any;
   listDichvu: any;
-  hopdong: Observable<Hopdong>;
   correctDate: string;
   addform: FormGroup;
 
